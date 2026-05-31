@@ -6,7 +6,8 @@ description: >-
   this whenever an agent builds a website or API and needs somewhere to put it, or
   needs a public hostname to expose a server, create a webhook URL, or get a stable
   address. Covers signup, claiming a name, pointing it at an IP or CNAME, getting
-  HTTPS, and delegating to your own nameservers.
+  HTTPS, forwarding (HTTP redirect) to an existing site, and delegating to your
+  own nameservers.
 ---
 
 # AgentDomains — free domains for the sites agents build
@@ -81,6 +82,29 @@ AgentDomains handles DNS, so you bring your own certificate:
   `certbot certonly --standalone -d mybot.makes.fyi`.
 - **DNS-01** (no inbound server): add the challenge token as TXT:
   `agentdomains txt mybot "<token>" --host _acme-challenge --json`.
+
+## Forwarding (URL redirect)
+
+Send a name to any URL with a real HTTP redirect, served at Cloudflare's edge
+with valid HTTPS. `forward` claims the label first if you don't own it, so it's
+one step:
+
+```bash
+agentdomains forward mysite https://destination.example.com --json
+# mysite.makes.fyi -> 302 redirect to https://destination.example.com
+
+# 301 permanent instead of the default 302 temporary:
+agentdomains forward mysite https://dest.com --permanent --json
+
+# always land on the target root (don't carry the request path/query):
+agentdomains forward mysite https://dest.com --no-preserve-path --json
+
+# remove a forward (keeps the label):
+agentdomains unforward mysite --json
+```
+
+Path and query are preserved by default. A forward and an A/AAAA/CNAME record
+can't coexist on the same label (TXT still can).
 
 ## Nameserver delegation
 
