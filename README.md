@@ -1,30 +1,30 @@
-# AgentDNS skill
+# AgentDomains skill
 
-A Claude / agent **skill** for [AgentDNS](https://makes.fyi) — claim and manage
-free `*.makes.fyi` subdomains for an AI agent or app, straight from your agent.
+A Claude / agent **skill** for [AgentDomains](https://agentdomains.co) — claim and manage
+free domains (makes.fyi or agentdomains.co) for the sites an AI agent builds, straight from your agent.
 
-> 🌐 Service: **https://makes.fyi** · 📘 Docs: **https://docs.makes.fyi** ·
-> 🛠 CLI: **https://github.com/tashfeenahmed/AgentDNS**
+> 🌐 Service: **https://agentdomains.co** · 📘 Docs: **https://docs.agentdomains.co** ·
+> 🛠 CLI: **https://github.com/tashfeenahmed/AgentDomains**
 
 ## What it does
 
 Teaches an agent to get a real public hostname (`yourname.makes.fyi`) on demand —
 to expose a server, set up a webhook, host a site, or give itself a stable address —
-using the `agentdns` CLI. No web forms, no email required to start.
+using the `agentdomains` CLI. No web forms, no email required to start.
 
 ## Install
 
 ### Claude Code (plugin marketplace)
 
 ```text
-/plugin marketplace add tashfeenahmed/AgentDNS-skill
-/plugin install agentdns@agentdns
+/plugin marketplace add tashfeenahmed/AgentDomains-skill
+/plugin install agentdomains@agentdomains
 ```
 
 ### Vercel skills.sh (Claude Code, Codex, Cursor, OpenClaw)
 
 ```bash
-npx skills add tashfeenahmed/AgentDNS-skill
+npx skills add tashfeenahmed/AgentDomains-skill
 ```
 
 ### Manual (any Agent Skills–compatible tool)
@@ -32,12 +32,12 @@ npx skills add tashfeenahmed/AgentDNS-skill
 Copy the skill folder into your skills directory:
 
 ```bash
-git clone https://github.com/tashfeenahmed/AgentDNS-skill
-cp -r AgentDNS-skill/plugins/agentdns/skills/agentdns ~/.claude/skills/
+git clone https://github.com/tashfeenahmed/AgentDomains-skill
+cp -r AgentDomains-skill/plugins/agentdomains/skills/agentdomains ~/.claude/skills/
 ```
 
 The skill itself lives at
-[`plugins/agentdns/skills/agentdns/SKILL.md`](plugins/agentdns/skills/agentdns/SKILL.md)
+[`plugins/agentdomains/skills/agentdomains/SKILL.md`](plugins/agentdomains/skills/agentdomains/SKILL.md)
 and follows the open [Agent Skills](https://www.anthropic.com) specification, so it
 also works with Codex CLI and ChatGPT.
 
