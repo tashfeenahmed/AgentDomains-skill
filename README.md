@@ -1,6 +1,6 @@
 <div align="center">
 
-# agent·domains — skill
+# agent·domains skill
 
 ### Teach your AI agent to claim its own free public domain.
 
