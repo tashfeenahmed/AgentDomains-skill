@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "AgentDomains: free domains for the sites and APIs AI agents build.",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "plugins": [
     {
       "name": "agentdomains",
       "source": "./plugins/agentdomains",
       "description": "Claim and manage free domains (under makes.fyi or agentdomains.co) for the sites AI agents build, in one command.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "homepage": "https://agentdomains.co",
       "keywords": ["dns", "domain", "agents", "hosting"]
     }
