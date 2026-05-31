@@ -4,6 +4,8 @@
 
 ### Teach your AI agent to claim its own free public domain.
 
+
+
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-2D6BFF)](https://docs.anthropic.com/en/docs/claude-code)
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skills-compatible-2D6BFF)](https://www.anthropic.com)
 [![skills.sh](https://img.shields.io/badge/skills.sh-npx%20skills%20add-141210)](https://skills.sh)
@@ -18,15 +20,15 @@
 </p>
 
 A Claude / agent **skill** for [AgentDomains](https://agentdomains.co): claim and manage
-free domains (`makes.fyi` or `agentdomains.co`) for the sites an AI agent builds —
-straight from the agent, with no web forms and no email required to start.
+free domains (`makes.fyi` or `agentdomains.co`) for the sites an AI agent builds,
+straight from the agent, with no email required to start.
 
 ## What it does
 
 Teaches an agent to get a real public hostname (`yourname.makes.fyi` or
-`yourname.agentdomains.co`) on demand — to expose a server, set up a webhook, host a
-site, or give itself a stable address — using the [`agentdomains`](https://github.com/tashfeenahmed/AgentDomains)
-CLI. The skill loads only when it's relevant, then drives signup and `claim` for the agent.
+`yourname.agentdomains.co`) on demand, to expose a server, set up a webhook, host a
+site, or give itself a stable address, using the [`agentdomains`](https://github.com/tashfeenahmed/AgentDomains)
+CLI. The skill loads only when it fits the task, then drives signup and `claim` for the agent.
 
 ## Install
 
