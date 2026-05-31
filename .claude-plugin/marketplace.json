@@ -1,0 +1,21 @@
+{
+  "name": "agentdns",
+  "owner": {
+    "name": "Tashfeen Ahmed",
+    "url": "https://makes.fyi"
+  },
+  "metadata": {
+    "description": "AgentDNS — free *.makes.fyi subdomains for AI agents.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "agentdns",
+      "source": "./plugins/agentdns",
+      "description": "Claim and manage free *.makes.fyi subdomains for AI agents — a public hostname in one command.",
+      "version": "0.1.0",
+      "homepage": "https://makes.fyi",
+      "keywords": ["dns", "subdomain", "agents", "hosting"]
+    }
+  ]
+}

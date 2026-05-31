@@ -1,0 +1,13 @@
+{
+  "name": "agentdns",
+  "description": "Claim and manage free *.makes.fyi subdomains for AI agents — a public hostname in one command.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Tashfeen Ahmed",
+    "url": "https://makes.fyi"
+  },
+  "homepage": "https://makes.fyi",
+  "repository": "https://github.com/tashfeenahmed/AgentDNS-skill",
+  "license": "FSL-1.1-Apache-2.0",
+  "keywords": ["dns", "subdomain", "agents", "hosting", "webhook", "ssl"]
+}
