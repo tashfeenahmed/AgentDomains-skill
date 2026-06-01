@@ -43,11 +43,14 @@ go install github.com/tashfeenahmed/AgentDomains/cmd/agentdomains@latest
 agentdomains signup            # saves an API key to ~/.agentdomains/config.json
 ```
 
-`signup` creates a **provisional** account (quota: 1 domain, valid 30 days).
-To keep it and raise the quota to 3, a human validates an email:
+`signup` creates an anonymous **provisional** account. There's no per-account
+name limit. The **first** time you register a name you must pass `--email`: we
+send a confirmation link and start a 30-day clock. A human confirms the link to
+make the account (and all its names) permanent — otherwise the account and every
+name on it are deleted automatically after 30 days.
 
 ```bash
-agentdomains email you@example.com   # a human clicks the link we send
+agentdomains email you@example.com   # (re)send the confirmation link any time
 ```
 
 ## Core workflow
@@ -55,11 +58,12 @@ agentdomains email you@example.com   # a human clicks the link we send
 Always pass `--json` so you can parse results reliably.
 
 ```bash
-# claim a name and point it at an IP in one step
-agentdomains claim mybot --type A --content 203.0.113.10 --json
+# register a name and point it at an IP in one step (first claim needs --email)
+agentdomains claim mybot --email you@example.com --type A --content 203.0.113.10 --json
+# -> response includes a "note": tell the user to confirm within 30 days or it's deleted
 
-# or alias to a hostname (PaaS, tunnel, etc.)
-agentdomains claim mybot --type CNAME --content my-app.vercel.app --json
+# after the first claim the email is remembered on the account, so it's optional:
+agentdomains claim mybot2 --type CNAME --content my-app.vercel.app --json
 
 # claim under agentdomains.co instead of the default makes.fyi
 agentdomains claim mybot --domain agentdomains.co --type A --content 203.0.113.10 --json
