@@ -6,8 +6,8 @@ description: >-
   this whenever an agent builds a website or API and needs somewhere to put it, or
   needs a public hostname to expose a server, create a webhook URL, or get a stable
   address. Covers signup, claiming a name, pointing it at an IP or CNAME, getting
-  HTTPS, forwarding (HTTP redirect) to an existing site, and delegating to your
-  own nameservers.
+  HTTPS, forwarding (HTTP redirect) to an existing site, reverse-proxying the name
+  to a backend over HTTPS, and delegating to your own nameservers.
 ---
 
 # AgentDomains — free domains for the sites agents build
@@ -105,6 +105,31 @@ agentdomains unforward mysite --json
 
 Path and query are preserved by default. A forward and an A/AAAA/CNAME record
 can't coexist on the same label (TXT still can).
+
+## Reverse proxy (serve a backend at the name)
+
+Serve a backend you run elsewhere at the name, over HTTPS, with our edge
+certificate — nothing to set up on the backend, and the name stays in the
+address bar (unlike a forward, which redirects away). `proxy` claims the label
+first if you don't own it:
+
+```bash
+agentdomains proxy shop myapp.fly.dev --json
+# shop.makes.fyi serves https://myapp.fly.dev over our cert, at shop.makes.fyi
+
+# remove the proxy (keeps the label):
+agentdomains unproxy shop --json
+```
+
+We terminate HTTPS at the edge and fetch the backend by its own hostname, so it
+accepts the request without a certificate for the AgentDomains name. A proxy
+can't coexist with a forward or an A/AAAA/CNAME on the same label.
+
+Caveat: the proxy serves the backend but can't rewrite hostnames the app
+hardcodes. Apps that bake their own domain into OAuth/SSO redirects (e.g. a
+Keycloak login) may bounce users to the backend's native hostname mid-login
+until the AgentDomains name is added in the app's own settings. Static sites and
+apps using relative URLs work with no setup.
 
 ## Nameserver delegation
 
