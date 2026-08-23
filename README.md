@@ -30,6 +30,12 @@ Teaches an agent to get a real public hostname (`yourname.makes.fyi` or
 site, or give itself a stable address, using the [`agentdomains`](https://github.com/tashfeenahmed/AgentDomains)
 CLI. The skill loads only when it fits the task, then drives signup and `claim` for the agent.
 
+> **Prefer tool calls to a CLI?** There is also an MCP server —
+> [`@agentdomains/mcp`](https://github.com/tashfeenahmed/AgentDomains-mcp) — exposing the same
+> operations as typed tools over stdio (`npx -y @agentdomains/mcp`) or the hosted endpoint at
+> `https://mcp.agentdomains.co`. This skill and the MCP server are independent; use whichever
+> suits your setup. See the [MCP docs](https://docs.agentdomains.co/#mcp).
+
 ## Install
 
 ### Claude Code (plugin marketplace)
