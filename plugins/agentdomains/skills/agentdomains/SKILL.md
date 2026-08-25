@@ -7,7 +7,8 @@ description: >-
   needs a public hostname to expose a server, create a webhook URL, or get a stable
   address. Covers signup, claiming a name, pointing it at an IP or CNAME, getting
   HTTPS, forwarding (HTTP redirect) to an existing site, reverse-proxying the name
-  to a backend over HTTPS, and delegating to your own nameservers.
+  to a backend over HTTPS, delegating to your own nameservers, removing a single DNS
+  record, and closing the account again.
 ---
 
 # AgentDomains — free domains for the sites agents build
@@ -75,6 +76,7 @@ agentdomains claim mybot --domain agentdomains.co --type A --content 203.0.113.1
 agentdomains list --json
 agentdomains get mybot --json
 agentdomains record mybot --type A --content 203.0.113.10 --host www --json
+agentdomains unrecord mybot <record-id> --json   # drop ONE record, keep the name
 agentdomains delete mybot --json
 ```
 
@@ -110,8 +112,16 @@ agentdomains forward mysite https://dest.com --no-preserve-path --json
 agentdomains unforward mysite --json
 ```
 
-Path and query are preserved by default. A forward and an A/AAAA/CNAME record
-can't coexist on the same label (TXT still can).
+Path and query are preserved by default.
+
+**A forward takes the hostname over.** Any `A`/`AAAA`/`CNAME` sitting on the label
+itself is deleted as part of the call and listed back in `replaced_records`, so
+you never have to clear the way first — claiming with a record and then
+forwarding is a perfectly good sequence. Records on a sub-label
+(`www.mysite.makes.fyi`) are different hostnames and survive, and TXT records are
+left alone. Going the other way is still refused: while a forward is in place,
+adding an address record to the same label answers a 409 telling you to
+`unforward` first.
 
 ## Reverse proxy (serve a backend at the name)
 
@@ -129,8 +139,10 @@ agentdomains unproxy shop --json
 ```
 
 We terminate HTTPS at the edge and fetch the backend by its own hostname, so it
-accepts the request without a certificate for the AgentDomains name. A proxy
-can't coexist with a forward or an A/AAAA/CNAME on the same label.
+accepts the request without a certificate for the AgentDomains name. Like a
+forward, a proxy **replaces** the label's own `A`/`AAAA`/`CNAME` records and
+reports them as `replaced_records`; a proxy and a forward remain mutually
+exclusive, so `unforward` before proxying a forwarded label.
 
 Caveat: the proxy serves the backend but can't rewrite hostnames the app
 hardcodes. Apps that bake their own domain into OAuth/SSO redirects (e.g. a
@@ -162,8 +174,20 @@ You can also call the HTTP API directly; see https://docs.agentdomains.co#api.
 - Names: lowercase letters, digits, hyphens; some labels (e.g. `api`, `www`) are reserved.
 - Labels are lowercased when claimed: asking for `MyApp` gives you `myapp.makes.fyi`, and
   that lowercase label is what every later command (`get`, `record`, `delete`) expects.
-- `forward` and `proxy` refuse a label that already has an A/AAAA/CNAME record. There is no
-  delete-one-record call, so claim the label bare (no `--type`/`--content`) when you intend
-  to forward or proxy it.
+- **Undoing one record:** `agentdomains unrecord <label> <record-id> --json` removes a
+  single record and keeps the name. Record ids come from `get` (and from the `claim` /
+  `record` responses).
+- **A claim and its first record stand or fall together.** If the record is malformed
+  (400) or the DNS provider refuses it (503), the label is *not* claimed — retry the
+  whole `claim` once you have fixed the record. Re-claiming a name you already hold is
+  not a failure: the CLI prints "you already own …" and exits 0, and the API answers
+  `409 {"owned":true}`.
+- **Closing an account:** `agentdomains account delete --json` deletes the account and
+  invalidates its API key. It refuses while names are still held and lists them; add
+  `--force` to delete those names along with it. There is no undo — the names go back
+  into the pool for anyone to claim.
+- **Errors say whether to retry.** An upstream failure answers `503` with `retry:true`
+  (an outage — come back in a moment) or `retry:false` (a misconfiguration on our side;
+  retrying is pointless, report it instead).
 - Be a good citizen: claim what you need, `delete` what you don't.
 - Service & docs: https://agentdomains.co · https://docs.agentdomains.co
