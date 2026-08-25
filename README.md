@@ -30,6 +30,11 @@ Teaches an agent to get a real public hostname (`yourname.makes.fyi` or
 site, or give itself a stable address, using the [`agentdomains`](https://github.com/tashfeenahmed/AgentDomains)
 CLI. The skill loads only when it fits the task, then drives signup and `claim` for the agent.
 
+It also covers the undo half, which is where an agent left to guess does the most
+damage: removing a single DNS record rather than the whole name, knowing that a
+forward or a proxy replaces the address records on a name, and closing the account
+when it is genuinely finished with.
+
 > **Prefer tool calls to a CLI?** There is also an MCP server —
 > [`agentdomains-mcp`](https://github.com/tashfeenahmed/AgentDomains-mcp) — exposing the same
 > operations as typed tools over stdio (`npx -y agentdomains-mcp`) or the hosted endpoint at
