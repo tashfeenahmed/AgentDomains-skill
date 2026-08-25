@@ -24,5 +24,7 @@ else
 fi
 
 echo
-echo "Ready. Claim a domain with:  agentdomains claim <name> --type A --content <ip> --json"
+echo "Ready. Claim a domain with:"
+echo "  agentdomains claim <name> --email you@example.com --type A --content <ip> --json"
+echo "(--email is required only on this account's first claim.)"
 echo "Docs: https://docs.agentdomains.co"

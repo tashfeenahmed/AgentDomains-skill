@@ -48,7 +48,8 @@
   <rect x="536" y="158" width="168" height="28" rx="8" fill="#EFFCF5"/>
   <text x="548" y="177" class="code">agentdomains claim myapp</text>
   <text x="536" y="216" class="desc">Signup and claim run</text>
-  <text x="536" y="236" class="desc">on their own.</text>
+  <text x="536" y="236" class="desc">on their own. The first</text>
+  <text x="536" y="256" class="desc">claim needs --email.</text>
 
   <!-- 4: live -->
   <rect x="760" y="100" width="200" height="170" rx="16" fill="#FFFFFF" stroke="#00CC74" stroke-width="2"/>

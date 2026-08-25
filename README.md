@@ -21,7 +21,7 @@
 
 A Claude / agent **skill** for [AgentDomains](https://agentdomains.co): claim and manage
 free domains (`makes.fyi` or `agentdomains.co`) for the sites an AI agent builds,
-straight from the agent, with no email required to start.
+straight from the agent. Signup needs nothing; the first name needs an email address.
 
 ## What it does
 
@@ -31,8 +31,8 @@ site, or give itself a stable address, using the [`agentdomains`](https://github
 CLI. The skill loads only when it fits the task, then drives signup and `claim` for the agent.
 
 > **Prefer tool calls to a CLI?** There is also an MCP server —
-> [`@agentdomains/mcp`](https://github.com/tashfeenahmed/AgentDomains-mcp) — exposing the same
-> operations as typed tools over stdio (`npx -y @agentdomains/mcp`) or the hosted endpoint at
+> [`agentdomains-mcp`](https://github.com/tashfeenahmed/AgentDomains-mcp) — exposing the same
+> operations as typed tools over stdio (`npx -y agentdomains-mcp`) or the hosted endpoint at
 > `https://mcp.agentdomains.co`. This skill and the MCP server are independent; use whichever
 > suits your setup. See the [MCP docs](https://docs.agentdomains.co/#mcp).
 

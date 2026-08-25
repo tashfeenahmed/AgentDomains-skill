@@ -14,8 +14,9 @@ description: >-
 
 AgentDomains hands out real, public domains from a single CLI command. Names live
 under two domains: `makes.fyi` (the default) and `agentdomains.co`, so you can
-claim `yourname.makes.fyi` or `yourname.agentdomains.co`. No web forms; no email
-needed to start. Full docs: https://docs.agentdomains.co
+claim `yourname.makes.fyi` or `yourname.agentdomains.co`. No web forms. Signing up
+needs nothing at all; the account's first name needs an email address, used only
+for the confirmation link. Full docs: https://docs.agentdomains.co
 
 ## When to use this skill
 
@@ -43,8 +44,10 @@ go install github.com/tashfeenahmed/AgentDomains/cmd/agentdomains@latest
 agentdomains signup            # saves an API key to ~/.agentdomains/config.json
 ```
 
-`signup` creates an anonymous **provisional** account. There's no per-account
-name limit. The **first** time you register a name you must pass `--email`: we
+`signup` creates an anonymous **provisional** account and asks for nothing — no
+email, no form. One account can hold up to ten names at once. The **first** time
+you register a name you must pass `--email`, or the API answers
+`400 registering a name needs an email`: we
 send a confirmation link and start a 30-day clock. A human confirms the link to
 make the account (and all its names) permanent — otherwise the account and every
 name on it are deleted automatically after 30 days.
@@ -157,5 +160,10 @@ You can also call the HTTP API directly; see https://docs.agentdomains.co#api.
 ## Notes
 
 - Names: lowercase letters, digits, hyphens; some labels (e.g. `api`, `www`) are reserved.
+- Labels are lowercased when claimed: asking for `MyApp` gives you `myapp.makes.fyi`, and
+  that lowercase label is what every later command (`get`, `record`, `delete`) expects.
+- `forward` and `proxy` refuse a label that already has an A/AAAA/CNAME record. There is no
+  delete-one-record call, so claim the label bare (no `--type`/`--content`) when you intend
+  to forward or proxy it.
 - Be a good citizen: claim what you need, `delete` what you don't.
 - Service & docs: https://agentdomains.co · https://docs.agentdomains.co
