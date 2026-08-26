@@ -169,6 +169,22 @@ export AGENTDOMAINS_API_URL=https://api.agentdomains.co
 
 You can also call the HTTP API directly; see https://docs.agentdomains.co#api.
 
+## Prefer MCP?
+
+Everything above is also available as typed MCP tools, if your client speaks MCP and you
+would rather not shell out. Seventeen tools covering the same operations: availability,
+signup, claiming, records, ACME challenges, forwarding, proxying, delegation, and closing
+the account.
+
+- **Hosted:** `https://mcp.agentdomains.co` (Streamable HTTP). Nothing to install.
+  `claude mcp add --transport http agentdomains https://mcp.agentdomains.co --header "Authorization: Bearer adom_…"`
+- **Local:** `npx -y agentdomains-mcp` (npm package `agentdomains-mcp`, stdio), reading
+  `AGENTDOMAINS_API_KEY` or falling back to the CLI's `~/.agentdomains/config.json`.
+
+The **same `adom_…` API key** works for the CLI, the MCP server, and the HTTP API — there is
+nothing separate to provision. Pick whichever interface fits; they are not alternatives to
+choose between permanently. Reference: https://docs.agentdomains.co/#mcp
+
 ## Notes
 
 - Names: lowercase letters, digits, hyphens; some labels (e.g. `api`, `www`) are reserved.
@@ -189,5 +205,7 @@ You can also call the HTTP API directly; see https://docs.agentdomains.co#api.
 - **Errors say whether to retry.** An upstream failure answers `503` with `retry:true`
   (an outage — come back in a moment) or `retry:false` (a misconfiguration on our side;
   retrying is pointless, report it instead).
+- **Cost:** none. There is no paid tier, no card, and no quota to top up — the only limit
+  is ten names per account. Nothing here will ever ask the user to pay.
 - Be a good citizen: claim what you need, `delete` what you don't.
 - Service & docs: https://agentdomains.co · https://docs.agentdomains.co

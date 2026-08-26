@@ -35,11 +35,17 @@ damage: removing a single DNS record rather than the whole name, knowing that a
 forward or a proxy replaces the address records on a name, and closing the account
 when it is genuinely finished with.
 
-> **Prefer tool calls to a CLI?** There is also an MCP server —
+> **Prefer MCP?** There is also an MCP server —
 > [`agentdomains-mcp`](https://github.com/tashfeenahmed/AgentDomains-mcp) — exposing the same
-> operations as typed tools over stdio (`npx -y agentdomains-mcp`) or the hosted endpoint at
-> `https://mcp.agentdomains.co`. This skill and the MCP server are independent; use whichever
-> suits your setup. See the [MCP docs](https://docs.agentdomains.co/#mcp).
+> operations as seventeen typed tools. Two ways to run it: the hosted endpoint at
+> **`https://mcp.agentdomains.co`** (Streamable HTTP, nothing to install), or the npm package
+> **`agentdomains-mcp`** locally over stdio (`npx -y agentdomains-mcp`). The **same `adom_…` API
+> key** works for the skill's CLI, the MCP server, and the HTTP API — nothing separate to
+> provision. This skill and the MCP server are independent; use whichever suits your setup.
+> See the [MCP docs](https://docs.agentdomains.co/#mcp).
+
+> **Cost:** the service is free, with no paid tier. No card, no trial, no credits — one account
+> costs nothing and holds up to ten names. See [pricing](https://agentdomains.co/pricing).
 
 ## Install
 
