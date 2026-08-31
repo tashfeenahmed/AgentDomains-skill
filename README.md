@@ -62,6 +62,21 @@ when it is genuinely finished with.
 npx skills add tashfeenahmed/AgentDomains-skill
 ```
 
+### ClawHub (OpenClaw)
+
+```bash
+openclaw skills install @tashfeenahmed/agentdomains
+```
+
+Or, without OpenClaw, straight from the registry with the ClawHub CLI:
+
+```bash
+npx clawhub install tashfeenahmed/agentdomains
+```
+
+The listing lives at
+[clawhub.ai/tashfeenahmed/skills/agentdomains](https://clawhub.ai/tashfeenahmed/skills/agentdomains).
+
 ### Manual (any Agent Skills–compatible tool)
 
 ```bash
@@ -90,6 +105,11 @@ plugins/agentdomains/
 This repo is structured as a Claude Code plugin marketplace, so it can be auto-indexed by
 directories like [claudemarketplaces.com](https://claudemarketplaces.com),
 [SkillsMP](https://skillsmp.com), and [LobeHub](https://lobehub.com/skills).
+
+The skill is also published to [ClawHub](https://clawhub.ai/tashfeenahmed/skills/agentdomains),
+the OpenClaw registry, where it is installable by handle. That one is *not* auto-indexed: a new
+version has to be pushed by hand, so a release here does not reach ClawHub on its own. The steps
+are in [`docs/PUBLISHING.md`](docs/PUBLISHING.md).
 
 ## License
 
