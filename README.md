@@ -44,8 +44,9 @@ when it is genuinely finished with.
 > provision. This skill and the MCP server are independent; use whichever suits your setup.
 > See the [MCP docs](https://docs.agentdomains.co/#mcp).
 
-> **Cost:** the service is free, with no paid tier. No card, no trial, no credits — one account
-> costs nothing and holds up to ten names. See [pricing](https://agentdomains.co/pricing).
+> **Cost:** free for up to ten names per account, with no card. An optional Pro plan
+> ($5/month) holds 100 names; the skill tells the agent to offer it only when the user
+> hits the limit, and never to pay. See [pricing](https://agentdomains.co/pricing).
 
 ## Install
 
