@@ -205,7 +205,14 @@ choose between permanently. Reference: https://docs.agentdomains.co/#mcp
 - **Errors say whether to retry.** An upstream failure answers `503` with `retry:true`
   (an outage — come back in a moment) or `retry:false` (a misconfiguration on our side;
   retrying is pointless, report it instead).
-- **Cost:** none. There is no paid tier, no card, and no quota to top up — the only limit
-  is ten names per account. Nothing here will ever ask the user to pay.
+- **Cost:** free for up to ten names per account, no card. Everything above works on
+  the free plan. An optional **Pro** plan ($5/month or $48/year) raises the limit to 100
+  names, never releases a name for being unreachable, and gets priority support.
+- **At the limit** a claim answers `403` saying so. Tell the user they can free a slot
+  (`agentdomains delete <name>`) or upgrade to Pro. Don't pick for them and never start an
+  upgrade on your own. If they ask for Pro, `agentdomains upgrade --json` (or the
+  `upgrade_to_pro` MCP tool) returns a Stripe checkout `url`: give them the link and the
+  price. Only a person can pay, so don't try to complete the payment. `agentdomains
+  billing` returns the portal link for managing or cancelling. `whoami` shows the `plan`.
 - Be a good citizen: claim what you need, `delete` what you don't.
 - Service & docs: https://agentdomains.co · https://docs.agentdomains.co
