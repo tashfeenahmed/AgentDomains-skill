@@ -50,6 +50,18 @@ when it is genuinely finished with.
 
 ## Install
 
+### Codex / ChatGPT (plugin marketplace)
+
+This repo doubles as a Codex repo marketplace (`.agents/plugins/marketplace.json`), so
+Codex can add it directly:
+
+```bash
+codex plugin marketplace add tashfeenahmed/AgentDomains-skill
+```
+
+Then install `agentdomains` from the marketplace in the Codex app or CLI. The plugin
+ships the same `SKILL.md` as the Claude Code plugin.
+
 ### Claude Code (plugin marketplace)
 
 ```text
@@ -93,9 +105,11 @@ works with Codex CLI and ChatGPT.
 ## Repository layout
 
 ```text
-.claude-plugin/marketplace.json        # marketplace manifest (this repo is a marketplace)
+.claude-plugin/marketplace.json        # Claude Code marketplace manifest (this repo is a marketplace)
+.agents/plugins/marketplace.json       # Codex / ChatGPT marketplace manifest (same repo, second client)
 plugins/agentdomains/
-  .claude-plugin/plugin.json           # plugin manifest
+  .claude-plugin/plugin.json           # Claude Code plugin manifest
+  .codex-plugin/plugin.json            # Codex / ChatGPT plugin manifest
   skills/agentdomains/
     SKILL.md                           # the skill (name + description frontmatter)
     scripts/setup.sh                   # installs the CLI + creates an account
@@ -105,7 +119,10 @@ plugins/agentdomains/
 
 This repo is structured as a Claude Code plugin marketplace, so it can be auto-indexed by
 directories like [claudemarketplaces.com](https://claudemarketplaces.com),
-[SkillsMP](https://skillsmp.com), and [LobeHub](https://lobehub.com/skills).
+[SkillsMP](https://skillsmp.com), and [LobeHub](https://lobehub.com/skills). The Codex
+marketplace manifest under `.agents/plugins/` makes the same plugin readable by
+Codex-compatible directories, e.g.
+[awesome-codex-plugins](https://github.com/hashgraph-online/awesome-codex-plugins).
 
 The skill is also published to [ClawHub](https://clawhub.ai/tashfeenahmed/skills/agentdomains),
 the OpenClaw registry, where it is installable by handle. That one is *not* auto-indexed: a new

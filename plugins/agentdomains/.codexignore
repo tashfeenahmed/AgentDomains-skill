@@ -1,0 +1,6 @@
+.git
+.github
+docs
+.claude-plugin/marketplace.json
+.agents
+SECURITY.md
