@@ -29,7 +29,7 @@
     "websiteURL": "https://agentdomains.co",
     "defaultPrompt": [
       "Claim a free subdomain for the site you just built",
-      "Expose my local dev server at a public HTTPS URL",
+      "Forward a free subdomain to my existing site",
       "Point my domain at my server and enable HTTPS"
     ],
     "brandColor": "#2D6BFF",

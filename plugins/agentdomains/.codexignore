@@ -1,6 +1,2 @@
-.git
-.github
-docs
-.claude-plugin/marketplace.json
-.agents
-SECURITY.md
+# Not plugin content for Codex: the Claude Code manifest lives beside ours.
+.claude-plugin

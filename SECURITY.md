@@ -19,12 +19,14 @@ an optional setup script (`skills/agentdomains/scripts/setup.sh`). With the
 user's consent, the agent:
 
 1. Installs the open-source [`agentdomains` CLI](https://github.com/tashfeenahmed/AgentDomains)
-   via `go install` from this repository's published Go module, or points the
-   user at prebuilt binaries from the GitHub releases page.
+   via `go install github.com/tashfeenahmed/AgentDomains/cmd/agentdomains@latest`
+   (the Go module published from the tashfeenahmed/AgentDomains repository, not
+   this one), or points the user at prebuilt binaries on that repository's
+   GitHub releases page.
 2. Creates an AgentDomains account (`agentdomains signup`) — signup needs no
    credentials; the account's first domain claim needs an email address the
    user supplies.
-3. Calls the public AgentDomains API at `https://agentdomains.co` over HTTPS
+3. Calls the public AgentDomains API at `https://api.agentdomains.co` over HTTPS
    using an API key that is stored locally in `~/.agentdomains/config.json`
    and never leaves the machine except in the `Authorization` header of
    requests to that API.
