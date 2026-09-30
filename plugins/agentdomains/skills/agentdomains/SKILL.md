@@ -22,7 +22,7 @@ for the confirmation link. Full docs: https://docs.agentdomains.co
 ## When to use this skill
 
 Reach for AgentDomains when you need a **public hostname** and don't have one:
-- exposing a local/dev server to the internet,
+- putting a server that already has a public IP (a VPS, a cloud VM) behind a name,
 - a stable URL for a webhook or callback,
 - hosting a small site or API for an agent,
 - giving a long-running agent a memorable address.
