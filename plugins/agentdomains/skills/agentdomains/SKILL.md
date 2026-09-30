@@ -177,11 +177,11 @@ signup, claiming, records, ACME challenges, forwarding, proxying, delegation, an
 the account.
 
 - **Hosted:** `https://mcp.agentdomains.co` (Streamable HTTP). Nothing to install.
-  `claude mcp add --transport http agentdomains https://mcp.agentdomains.co --header "Authorization: Bearer adom_…"`
+  `claude mcp add --transport http agentdomains https://mcp.agentdomains.co --header "Authorization: Bearer adom_..."`
 - **Local:** `npx -y agentdomains-mcp` (npm package `agentdomains-mcp`, stdio), reading
   `AGENTDOMAINS_API_KEY` or falling back to the CLI's `~/.agentdomains/config.json`.
 
-The **same `adom_…` API key** works for the CLI, the MCP server, and the HTTP API — there is
+The **same `adom_...` API key** works for the CLI, the MCP server, and the HTTP API — there is
 nothing separate to provision. Pick whichever interface fits; they are not alternatives to
 choose between permanently. Reference: https://docs.agentdomains.co/#mcp
 
@@ -196,7 +196,7 @@ choose between permanently. Reference: https://docs.agentdomains.co/#mcp
 - **A claim and its first record stand or fall together.** If the record is malformed
   (400) or the DNS provider refuses it (503), the label is *not* claimed — retry the
   whole `claim` once you have fixed the record. Re-claiming a name you already hold is
-  not a failure: the CLI prints "you already own …" and exits 0, and the API answers
+  not a failure: the CLI prints "you already own ..." and exits 0, and the API answers
   `409 {"owned":true}`.
 - **Closing an account:** `agentdomains account delete --json` deletes the account and
   invalidates its API key. It refuses while names are still held and lists them; add
